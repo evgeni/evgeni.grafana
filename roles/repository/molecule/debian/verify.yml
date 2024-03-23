@@ -7,4 +7,3 @@
       ansible.builtin.apt:
         name: grafana-agent
         state: present
-        update_cache: yes
