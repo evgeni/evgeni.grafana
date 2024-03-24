@@ -1,0 +1,6 @@
+---
+- name: Configure Grafana repository
+  community.general.zypper_repository:
+    name: grafana
+    repo: https://rpm.grafana.com
+    auto_import_keys: true

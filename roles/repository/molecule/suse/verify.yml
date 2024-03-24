@@ -1,0 +1,9 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install grafana-agent
+      ansible.builtin.package:
+        name: grafana-agent
+        state: present
