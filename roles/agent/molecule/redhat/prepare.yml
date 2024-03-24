@@ -3,6 +3,6 @@
   hosts: all
   gather_facts: true
   tasks:
-    - name: setup repository
+    - name: Setup repository
       ansible.builtin.include_role:
         name: repository
