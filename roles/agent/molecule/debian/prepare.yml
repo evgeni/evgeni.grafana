@@ -1,0 +1,12 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: install python3-debian
+      ansible.builtin.apt:
+        name: python3-debian
+        update_cache: true
+    - name: setup repository
+      ansible.builtin.include_role:
+        name: repository

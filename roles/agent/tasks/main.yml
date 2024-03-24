@@ -1,0 +1,5 @@
+---
+- name: Install Grafana Agent
+  ansible.builtin.package:
+    name: grafana-agent
+    state: present

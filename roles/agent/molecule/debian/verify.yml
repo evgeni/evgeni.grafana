@@ -1,0 +1,12 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Gather package facts
+      ansible.builtin.package_facts:
+
+    - name: Assert grafana-agent is installed
+      ansible.builtin.assert:
+        that:
+          - "'grafana-agent' in ansible_facts.packages"
