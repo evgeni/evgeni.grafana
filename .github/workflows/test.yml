@@ -60,12 +60,26 @@ jobs:
       - name: Run tests
         run: pytest -vv --molecule collections/
 
+  ansible-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install ansible-lint
+      - name: Run ansible-lint
+        run: ansible-lint -vv
+
   check:
     if: always()
 
     needs:
       - sanity
       - molecule
+      - ansible-lint
 
     runs-on: ubuntu-latest
 
