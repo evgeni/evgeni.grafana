@@ -15,3 +15,4 @@ issues: https://github.com/evgeni/evgeni.grafana/issues
 build_ignore:
   - .gitignore
   - changelogs/.plugin-cache.yaml
+  - venv
