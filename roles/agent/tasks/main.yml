@@ -3,3 +3,9 @@
   ansible.builtin.package:
     name: grafana-agent
     state: present
+
+- name: Start Grafana Agent
+  ansible.builtin.service:
+    name: grafana-agent
+    state: started
+    enabled: true
