@@ -4,6 +4,18 @@
     name: grafana-agent
     state: present
 
+- name: Configure Grafana Agent
+  ansible.builtin.copy:
+    dest: /etc/grafana-agent.yaml
+    content: "{{ grafana_agent_config | to_yaml }}"
+    owner: root
+    group: grafana-agent
+    mode: '0640'
+  notify:
+    - Restart Grafana Agent
+  when:
+    - grafana_agent_config is defined
+
 - name: Start Grafana Agent
   ansible.builtin.service:
     name: grafana-agent
