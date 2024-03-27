@@ -3,4 +3,8 @@
   hosts: all
   gather_facts: true
   roles:
-    - agent
+    - role: agent
+      vars:
+        grafana_agent_config:
+          server:
+            log_level: warn
