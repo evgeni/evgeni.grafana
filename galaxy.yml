@@ -1,14 +1,15 @@
 namespace: evgeni
 name: grafana
-version: 0.1.0
+version: 1.0.0
 readme: README.md
 authors:
   - Evgeni Golov (github.com/evgeni)
-description: null
+description: Manage Grafana repository and agent
 license_file: LICENSE
 tags:
   - grafana
   - grafana-agent
+  - application
 repository: https://github.com/evgeni/evgeni.grafana
 homepage: https://github.com/evgeni/evgeni.grafana
 issues: https://github.com/evgeni/evgeni.grafana/issues
