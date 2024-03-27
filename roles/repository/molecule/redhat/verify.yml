@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Install grafana-agent
+    - name: Install query-tee
       ansible.builtin.dnf:
-        name: grafana-agent
+        name: query-tee
         state: present
