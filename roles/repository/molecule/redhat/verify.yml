@@ -5,5 +5,5 @@
   tasks:
     - name: Install grafana-agent
       ansible.builtin.dnf:
-        name: grafana-agent
+        name: grafana-agentaaa
         state: present
