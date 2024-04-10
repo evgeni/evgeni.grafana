@@ -58,7 +58,7 @@ jobs:
       - name: Install dependencies
         run: pip install molecule molecule-plugins pytest pytest-ansible
       - name: Run tests
-        run: pytest -vv --molecule collections/
+        run: pytest -vv --molecule roles/
 
   ansible-lint:
     runs-on: ubuntu-latest
