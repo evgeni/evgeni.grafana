@@ -1,4 +1,0 @@
----
-- name: Refresh apt repository data
-  ansible.builtin.apt:
-    update_cache: true
