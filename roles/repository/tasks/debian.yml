@@ -7,5 +7,10 @@
     suites: stable
     components: main
     signed_by: https://apt.grafana.com/gpg.key
-  notify:
-    - Refresh apt repository data
+  register: __grafana_repository
+
+- name: Refresh apt repository data  # noqa: no-handler
+  ansible.builtin.apt:
+    update_cache: true
+  when:
+    - __grafana_repository is changed
