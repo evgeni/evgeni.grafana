@@ -58,9 +58,13 @@ jobs:
       - name: Install Ansible
         run: pip install --upgrade https://github.com/ansible/ansible/archive/${{ matrix.ansible }}.tar.gz
       - name: Install dependencies
-        run: pip install molecule molecule-plugins pytest pytest-ansible
+        run: pip install molecule molecule-plugins pytest pytest-ansible pytest-xdist
+      - name: Install collection dependencies
+        run: cd roles/repository && molecule dependency -s suse
       - name: Run tests
-        run: pytest -vv --molecule roles/
+        run: pytest -vv --numprocesses 4 --molecule roles/
+        env:
+          MOLECULE_OPTS: --parallel
 
   ansible-lint:
     runs-on: ubuntu-latest
