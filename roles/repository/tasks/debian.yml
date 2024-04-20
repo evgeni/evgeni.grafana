@@ -9,3 +9,6 @@
     signed_by: https://apt.grafana.com/gpg.key
   notify:
     - Refresh apt repository data
+
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
