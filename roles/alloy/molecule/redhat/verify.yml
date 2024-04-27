@@ -1,0 +1,12 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Gather package facts
+      ansible.builtin.package_facts:
+
+    - name: Assert alloy is installed
+      ansible.builtin.assert:
+        that:
+          - "'alloy' in ansible_facts.packages"

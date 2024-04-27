@@ -1,0 +1,8 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Setup repository
+      ansible.builtin.include_role:
+        name: repository

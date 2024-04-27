@@ -1,0 +1,23 @@
+---
+- name: Install Grafana Alloy
+  ansible.builtin.package:
+    name: alloy
+    state: present
+
+- name: Configure Grafana Alloy
+  ansible.builtin.copy:
+    dest: /etc/alloy/config.alloy
+    content: "{{ grafana_alloy_config }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Restart Grafana Alloy
+  when:
+    - grafana_alloy_config is defined
+
+- name: Start Grafana Alloy
+  ansible.builtin.service:
+    name: alloy
+    state: started
+    enabled: true
