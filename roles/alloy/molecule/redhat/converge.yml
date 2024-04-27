@@ -1,0 +1,24 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  roles:
+    - role: alloy
+      vars:
+        grafana_alloy_config: |
+          logging {
+            level = "warn"
+          }
+
+          prometheus.exporter.unix "default" {
+            include_exporter_metrics = true
+          }
+
+          prometheus.scrape "default" {
+            targets = concat(
+              prometheus.exporter.unix.default.targets,
+            )
+
+            forward_to = [
+            ]
+          }
