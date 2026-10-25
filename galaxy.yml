@@ -8,7 +8,7 @@ description: Manage Grafana repository and agent
 license_file: LICENSE
 tags:
   - grafana
-  - grafana-agent
+  - alloy
   - application
 repository: https://github.com/evgeni/evgeni.grafana
 homepage: https://github.com/evgeni/evgeni.grafana
