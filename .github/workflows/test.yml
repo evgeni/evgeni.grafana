@@ -60,9 +60,7 @@ jobs:
       - name: Install collection dependencies
         run: cd roles/repository && molecule dependency -s suse
       - name: Run tests
-        run: pytest -vv --numprocesses 4 --molecule roles/
-        env:
-          MOLECULE_OPTS: --parallel
+        run: pytest -vv --molecule roles/
 
   ansible-lint:
     runs-on: ubuntu-latest
