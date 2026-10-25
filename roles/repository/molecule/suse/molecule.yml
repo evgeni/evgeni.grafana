@@ -5,7 +5,7 @@ driver:
   name: ${DRIVER_NAME:-podman}
 platforms:
   - name: opensuse
-    image: registry.opensuse.org/opensuse/leap:15
+    image: registry.opensuse.org/opensuse/leap:16
 provisioner:
   name: ansible
 verifier:
