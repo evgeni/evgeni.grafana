@@ -5,4 +5,4 @@
   tasks:
     - name: Setup repository
       ansible.builtin.include_role:
-        name: repository
+        name: evgeni.grafana.repository
