@@ -13,16 +13,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  setup_matrix:
+    name: "Determine Ansible versions"
+    runs-on: ubuntu-latest
+    outputs:
+      ansible: ${{ steps.ansible.outputs.versions }}
+    steps:
+      - id: ansible
+        uses: evgeni/ansible-version@v0
+
   sanity:
     name: Sanity (Ⓐ${{ matrix.ansible }})
+    needs: setup_matrix
     strategy:
       fail-fast: false
       matrix:
-        ansible:
-          - stable-2.15
-          - stable-2.16
-          - stable-2.17
-          - devel
+        ansible: ${{ fromJSON(needs.setup_matrix.outputs.ansible) }}
     runs-on: ubuntu-latest
     steps:
       - name: Perform sanity testing
@@ -33,17 +39,14 @@ jobs:
           pull-request-change-detection: false
 
   molecule:
+    needs: setup_matrix
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
         python:
-          - "3.11"
-        ansible:
-          - stable-2.15
-          - stable-2.16
-          - stable-2.17
-          - devel
+          - "3.13"
+        ansible: ${{ fromJSON(needs.setup_matrix.outputs.ansible) }}
     steps:
       - uses: actions/checkout@v7
       - name: Set up Python
@@ -68,7 +71,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
-          python-version: "3.11"
+          python-version: "3.13"
       - name: Install dependencies
         run: pip install ansible-lint
       - name: Run ansible-lint
